@@ -45,9 +45,6 @@ function tweetQuote() {
   const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
   window.open(twitterUrl, "_blank");
 }
-
-// Toggle
-
 // Apply saved theme
 if (localStorage.getItem("theme") === "dark") {
   body.classList.add("dark-mode");
