@@ -3,6 +3,10 @@ const quoteText = document.getElementById("quote");
 const authorText = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+const sunIcon = document.querySelector(".fa-sun");
+const moonIcon = document.querySelector(".fa-moon");
 
 // Get quotes from the API
 let apiQuote = [];
@@ -42,6 +46,28 @@ function tweetQuote() {
   window.open(twitterUrl, "_blank");
 }
 
+// Toggle
+
+// Apply saved theme
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark-mode");
+  themeToggle.checked = true;
+} else {
+  body.classList.add("light-mode");
+  themeToggle.checked = true;
+}
+
+// Toggle theme on click
+themeToggle.addEventListener("change", () => {
+  body.classList.toggle("dark-mode");
+  body.classList.toggle("light-mode");
+
+  // Save theme preference
+  localStorage.setItem(
+    "theme",
+    body.classList.contains("dark-mode") ? "dark" : "light"
+  );
+});
 // Event Listeners
 newQuoteBtn.addEventListener("click", newQuote);
 twitterBtn.addEventListener("click", tweetQuote);
